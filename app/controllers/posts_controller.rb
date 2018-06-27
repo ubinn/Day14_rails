@@ -25,9 +25,12 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    # @post.daum_id = session[:current_cafe]
       if @post.save
-         redirect_to @post,flash: { success: 'Post was successfully created.' }
+         redirect_to @post ,flash: { success: 'Post was successfully created.' }
       else
+        p @post.errors
         render :new 
       end
   end
@@ -57,6 +60,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :daum_id)
+      #
     end
 end
