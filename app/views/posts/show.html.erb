@@ -8,8 +8,22 @@
   <%= @post.content %>
 </p>
 <br>
+<p>
+  <strong>Image_path:</strong>
+  <img src='<%= @post.image_path %>' width="50%" />
+</p>
+<p>
+  <strong>thumb_fill:</strong>
+  <img src='<%= @post.image_path.thumb_fill.url %>' />
+</p>
+<p>
+  <strong>thumb_fit:</strong>
+  <img src='<%= @post.image_path.thumb_fit.url %>' />
+</p>
+
+<br>
 <%= link_to '수정', edit_post_path(@post),class: 'btn btn-warning text-white' %> 
-<%= link_to '목록', posts_path, class: 'btn btn-info' %>
+<%= link_to '목록', cafe_path(@post.daum), class: 'btn btn-info' %>
 <%= link_to '삭제',post_path(@post),method: 'delete', class: 'btn btn-danger', data: {confirm: "삭제하시겠습니까?"}%>
 <hr>
 <br>

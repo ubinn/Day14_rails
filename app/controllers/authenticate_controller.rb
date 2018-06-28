@@ -1,7 +1,6 @@
 class AuthenticateController < ApplicationController
     # 회원가입 페이지 -> form_for 쓸꺼라서 빈껍데기 주자 아 라우팅때매 안된대
         def sign_up
-            @user = User.new
         end
     # 실제 회원가입 로직
         def user_sign_up
@@ -12,7 +11,8 @@ class AuthenticateController < ApplicationController
             if @user.save
                 redirect_to root_path, flash: {success: "회원가입 성공"}
             else
-                redirect_to :back , flash: {error: '회원가입 실패'}
+                p @user.errors
+                redirect_to :back , flash: {danger: '회원가입 실패'}
             end
         end    
     # 로그인 페이지

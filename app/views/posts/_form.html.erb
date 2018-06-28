@@ -1,6 +1,5 @@
 <%= form_for(post, html: {class: 'text-center'}) do |f| %>
   <%= f.hidden_field :daum_id, value: params[:cafe_id] %>
-
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
@@ -9,6 +8,11 @@
   <div class="field">
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  
+    <div class="field">
+    <%= f.label :image_path %>
+    <%= f.file_field :image_path, class: 'form-control' %>
   </div>
 <br>
   <div class="actions">

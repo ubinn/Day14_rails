@@ -3,8 +3,11 @@
 <br>
 <h1><%= @cafe.title %></h1><hr/>
 <p><%= @cafe.description %></p>
+
 <!--카페가입하기 -->
+<% # unless @cafe.is_member?(current_user) %>
 <%= link_to '가입하기', join_cafe_path(@cafe), method: 'POST', class: 'btn btn-warning' %>
+<% # end %>
 
 <ul class="list-group">
   <% @cafe.posts.each do |post| %>
